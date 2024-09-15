@@ -1,0 +1,7 @@
+ParentCategory => Category ==> Done
+Products <=> Categories
+Products <=> Warehouses
+Brand => Product
+Product => Reviews
+Product => Attributes
+Attribute => Price 

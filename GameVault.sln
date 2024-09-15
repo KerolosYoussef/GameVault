@@ -3,9 +3,56 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{70DBA67C-F21A-4A55-AA9E-368BFAB6CEF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{C455BC63-FB72-4233-93A9-9956B51DFDD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "src\Services\Catalog\Catalog.API\Catalog.API.csproj", "{A26062E9-2288-40FF-9715-6B1AC18FC8A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E80DF338-6F96-4FAA-AAE4-4F2DF28BA7C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameVault.Common", "src\Common\GameVault.Common\GameVault.Common.csproj", "{8D930799-C547-4EB1-A3A1-00534140B2F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CAD9226-956F-47A6-8A51-75CBB1E25615}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{129D8A32-6792-48A4-9CF4-F0C134C652F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C67F12B2-9747-445F-A3AF-AD2FFADEDD29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API.Tests", "Catalog.API.Tests\Catalog.API.Tests.csproj", "{049570DB-9EBE-42E8-9906-68EDABC5CE9C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A26062E9-2288-40FF-9715-6B1AC18FC8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26062E9-2288-40FF-9715-6B1AC18FC8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26062E9-2288-40FF-9715-6B1AC18FC8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26062E9-2288-40FF-9715-6B1AC18FC8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D930799-C547-4EB1-A3A1-00534140B2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D930799-C547-4EB1-A3A1-00534140B2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D930799-C547-4EB1-A3A1-00534140B2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D930799-C547-4EB1-A3A1-00534140B2F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049570DB-9EBE-42E8-9906-68EDABC5CE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049570DB-9EBE-42E8-9906-68EDABC5CE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049570DB-9EBE-42E8-9906-68EDABC5CE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049570DB-9EBE-42E8-9906-68EDABC5CE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70DBA67C-F21A-4A55-AA9E-368BFAB6CEF4} = {129D8A32-6792-48A4-9CF4-F0C134C652F0}
+		{C455BC63-FB72-4233-93A9-9956B51DFDD1} = {70DBA67C-F21A-4A55-AA9E-368BFAB6CEF4}
+		{A26062E9-2288-40FF-9715-6B1AC18FC8A5} = {C455BC63-FB72-4233-93A9-9956B51DFDD1}
+		{E80DF338-6F96-4FAA-AAE4-4F2DF28BA7C3} = {129D8A32-6792-48A4-9CF4-F0C134C652F0}
+		{8D930799-C547-4EB1-A3A1-00534140B2F3} = {E80DF338-6F96-4FAA-AAE4-4F2DF28BA7C3}
+		{049570DB-9EBE-42E8-9906-68EDABC5CE9C} = {C67F12B2-9747-445F-A3AF-AD2FFADEDD29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9A3F4B5-E9E7-443B-BEE4-7F853F770334}
