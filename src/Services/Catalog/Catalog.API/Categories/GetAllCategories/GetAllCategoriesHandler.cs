@@ -40,8 +40,6 @@ namespace Catalog.API.Categories.GetAllCategories
             // Return response
             return new GetAllCategoriesResult(pagination);
         }
-
-
         private static IQueryable<Category> ApplyFilter(GetAllCategoriesQuery request, IQueryable<Category> query)
         {
             query = query.Where(c

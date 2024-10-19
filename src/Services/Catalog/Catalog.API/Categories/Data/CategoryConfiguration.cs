@@ -39,21 +39,20 @@ namespace Catalog.API.Categories.Data
                 .OnDelete(DeleteBehavior.Restrict); // Specify the delete behavior
 
             builder.HasMany(c => c.Products)
-               .WithMany(p => p.Categories)
-               .UsingEntity<Dictionary<string, object>>(
-                   "CategoryProduct", // Name of the join table
-                   j => j
-                        .HasOne<Product>()
-                        .WithMany()
-                        .HasForeignKey("ProductId"),
-                   j => j
-                        .HasOne<Category>()
-                        .WithMany()
-                        .HasForeignKey("CategoryId"),
-                   j =>
-                   {
-                       j.HasKey("CategoryId", "ProductId");
-                   });
+            .WithMany(p => p.Categories)
+            .UsingEntity<CategoryProduct>(
+            j => j
+                .HasOne(cp => cp.Product)
+                .WithMany()
+                .HasForeignKey(cp => cp.ProductId),
+            j => j
+                .HasOne(cp => cp.Category)
+                .WithMany()
+                .HasForeignKey(cp => cp.CategoryId),
+            j =>
+            {
+                j.HasKey(cp => new { cp.ProductId, cp.CategoryId });
+            });
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿
 using Catalog.API.Categories.CreateCategory;
+using Catalog.API.Categories.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Categories.GetCategoryById
 {
     public record GetCategoryByIdRequest(Guid Id);
-    public record GetCategoryByIdResponse(Category? Category);
+    public record GetCategoryByIdResponse(CategoryDto? Category);
     public class GetCategoryByIdEndPoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)

@@ -19,15 +19,22 @@ namespace Catalog.API.Helpers
                 }
                 var propertyType = property.PropertyType;
 
-                // Convert query value to property type
-                var convertedValue = Convert.ChangeType(queryValue, propertyType);
-
-                if (convertedValue != null)
+                // Check if the type is guid
+                if(propertyType == typeof(Guid) || propertyType == typeof(Guid?))
                 {
-                    // Set the property value
-                    property.SetValue(request, convertedValue);
-                }
+                    property.SetValue(request, new Guid(queryValue));
+                } 
+                else
+                {
+                    // Convert query value to property type
+                    var convertedValue = Convert.ChangeType(queryValue, propertyType);
 
+                    if (convertedValue != null)
+                    {
+                        // Set the property value
+                        property.SetValue(request, convertedValue);
+                    }
+                }
             }
 
             return request;

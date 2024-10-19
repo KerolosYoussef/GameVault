@@ -1,7 +1,9 @@
 using Catalog.API;
+using Catalog.API.Helpers;
 using Catalog.API.Mapster;
 using GameVault.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +27,18 @@ builder.Services.AddCarter();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 builder.Services.RegisterMapsterConfigurations();
 builder.Services.AddCommonServices();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseMySql(connectionString, serverVersion), ServiceLifetime.Transient);
 
 var app = builder.Build();
+
+app.Services.MigrateData();
 
 // Configure the HTTPS request pipeling
 

@@ -6,9 +6,9 @@
         public string Color { get; set; } = string.Empty;
         public string Size { get; set; } = string.Empty;
         public string? CustomTypes { get; set; } = string.Empty;
-        public Price Price { get; set; } = new();
+        public Price Price { get; set; }
         public Guid PriceId { get; set; }
-        public Product Product { get; set; } = new();
+        public Product Product { get; set; }
         public Guid ProductId { get; set; }
 
     }

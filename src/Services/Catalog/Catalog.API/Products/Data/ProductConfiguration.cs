@@ -35,7 +35,7 @@ namespace Catalog.API.Products.Data
             // Relationships
 
             builder.HasMany(p => p.Attributes)
-                .WithOne(a => a.Product)  // Assuming ParentCategory does not have a navigation property back to Category
+                .WithOne(a => a.Product)
                 .HasForeignKey(c => c.ProductId)
                 .OnDelete(DeleteBehavior.Restrict); // Specify the delete behavior
         }

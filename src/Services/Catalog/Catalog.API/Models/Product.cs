@@ -7,10 +7,10 @@
         public string Sku { get; set; } = string.Empty;
         public bool Status { get; set; }
         public string? ImageUrl { get; set; }
-        public List<Category> Categories { get; set; } = new();
-        public List<Warehouse> Warehouses { get; set; } = new();
-        public List<Attribute> Attributes { get; set; } = new();
-        public Brand Brand { get; set; } = new();
+        public List<Category> Categories { get; set; } 
+        public List<Warehouse> Warehouses { get; set; }
+        public List<Attribute> Attributes { get; set; }
+        public Brand Brand { get; set; }
         public Guid BrandId { get; set; }
 
         public Product() { }
@@ -35,7 +35,6 @@
             Warehouses = warehouses;
             Attributes = attributes;
             Brand = brand;
-            BrandId = brand.Id;
         }
 
         public static Product Create(

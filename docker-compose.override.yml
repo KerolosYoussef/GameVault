@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  catalogdb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '!QAZ2wsx@F0X'
+      
+    ports:
+        - "3306:3306"
+    volumes:
+        - mysql_catalog:/var/lib/mysql 
