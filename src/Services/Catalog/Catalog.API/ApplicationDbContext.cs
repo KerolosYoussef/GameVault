@@ -19,6 +19,11 @@ namespace Catalog.API
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            ApplyDeletedAtGlobalFilter(modelBuilder);
+        }
+
+        private static void ApplyDeletedAtGlobalFilter(ModelBuilder modelBuilder)
+        {
             Expression<Func<BaseModel, bool>> filterExpr = bm => bm.DeletedAt == null;
             var entityTypes = modelBuilder.Model.GetEntityTypes().Where(x => x.ClrType.IsAssignableTo(typeof(BaseModel)));
             foreach (var mutableEntityType in entityTypes)
@@ -32,6 +37,5 @@ namespace Catalog.API
                 mutableEntityType.SetQueryFilter(lambdaExpression);
             }
         }
-
     }
 }
