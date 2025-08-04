@@ -11,5 +11,56 @@
         public Payment Payment { get; private set; } = default!;
         public OrderStatus OrderStatus { get; private set; } = OrderStatus.Pending;
         public decimal TotalPrice => OrderItems.Sum(item => item.Price * item.Quantity);
+
+        public static Order Create(
+            OrderId orderId,
+            CustomerId customerId,
+            OrderName orderName,
+            Address shippingAddress,
+            Address billingAddress,
+            Payment payment)
+        {
+            Order order = new()
+            {
+                Id = orderId,
+                CustomerId = customerId,
+                OrderName = orderName,
+                ShippingAddress = shippingAddress,
+                BillingAddress = billingAddress,
+                Payment = payment
+            };
+
+            order.AddDomainEvent(new OrderCreatedEvent(order));
+
+            return order;
+        }
+
+        public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus orderStatus)
+        {
+            OrderName = orderName;
+            ShippingAddress = shippingAddress;
+            BillingAddress = billingAddress;
+            Payment = payment;
+            OrderStatus = orderStatus;
+            AddDomainEvent(new OrderUpdatedEvent(this));
+        }
+
+        public void AddOrderItem(ProductId productId, int quantity, decimal price)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity, nameof(quantity));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price, nameof(price));
+
+            OrderItem orderItem = new(Id, productId, quantity, price);
+            _orderItems.Add(orderItem);
+        }
+
+        public void RemoveOrderItem(ProductId productId)
+        {
+            OrderItem? orderItem = _orderItems.FirstOrDefault(i => i.ProductId == productId);
+            if(orderItem is not null)
+            {
+                _orderItems.Remove(orderItem);
+            }
+        }
     }
 }
