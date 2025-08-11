@@ -6,12 +6,10 @@
         {
             string? connectionString = configuration.GetConnectionString("Database");
 
-            // services.AddDbContext<ApplicationDbContext>(options =>
-            //{
-            //    options.UseSqlServer(connectionString);
-            //});
-
-            // services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
 
             return services;
         }
