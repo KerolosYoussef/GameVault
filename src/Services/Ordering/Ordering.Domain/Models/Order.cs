@@ -2,7 +2,7 @@
 {
     public class Order : Aggregate<OrderId>
     {
-        private readonly List<OrderItem> _orderItems = new();
+        private readonly List<OrderItem> _orderItems = [];
         public IReadOnlyList<OrderItem> OrderItems => _orderItems.AsReadOnly();
         public CustomerId CustomerId { get; private set; } = default!;
         public OrderName OrderName { get; private set; } = default!;

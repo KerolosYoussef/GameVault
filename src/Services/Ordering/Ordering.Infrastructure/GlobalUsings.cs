@@ -10,3 +10,6 @@ global using Microsoft.EntityFrameworkCore.Diagnostics;
 global using Ordering.Domain.Abstractions;
 global using Ordering.Infrastructure.Data.Interceptors;
 global using MediatR;
+global using Ordering.Application.Data;
+global using System.Reflection;
+

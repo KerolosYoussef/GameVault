@@ -14,7 +14,7 @@
             return base.SavingChangesAsync(eventData, result, cancellationToken);
         }
 
-        private void UpdateEntites(DbContext? context)
+        private static void UpdateEntites(DbContext? context)
         {
             if (context is null)
                 return;
